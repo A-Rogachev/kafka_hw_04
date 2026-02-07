@@ -1,0 +1,14 @@
+**/.github/
+**/venv/
+**/.vscode/
+**/static/
+**/media/
+*.pyc
+**/__pycache__
+**/.python-version
+**/.env
+**/.ruff_cache/
+**/ruff.toml
+**/docker-compose_local.yml
+**/.git/
+**/.mypy_cache/

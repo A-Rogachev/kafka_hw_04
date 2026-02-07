@@ -1,0 +1,27 @@
+{
+    "name": "pg-connector",
+    "config": {
+        "connector.class": "io.debezium.connector.postgresql.PostgresConnector",
+        "database.hostname": "postgres",
+        "database.port": "5432",
+        "database.user": "${env:POSTGRES_USER}",
+        "database.password": "${env:POSTGRES_PASSWORD}",
+        "database.dbname": "customers",
+        "table.include.list": "public.users,public.orders",
+        "topic.prefix": "dbz",
+        "schema.include.list": "public",
+        "topic.creation.enable": "true",
+        "topic.creation.default.replication.factor": "2",
+        "topic.creation.default.partitions": "3",
+        "skipped.operations": "none",
+        "key.converter": "org.apache.kafka.connect.storage.StringConverter",
+        "key.converter.schemas.enable": "false",
+        "value.converter": "org.apache.kafka.connect.json.JsonConverter",
+        "value.converter.schemas.enable": "false",
+        "transforms": "unwrap,extractKey",
+        "transforms.unwrap.type": "io.debezium.transforms.ExtractNewRecordState",
+        "transforms.unwrap.drop.tombstones": "false",
+        "transforms.extractKey.type": "org.apache.kafka.connect.transforms.ExtractField$Key",
+        "transforms.extractKey.field": "id"
+    }
+}
